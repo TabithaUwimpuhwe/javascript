@@ -1,0 +1,53 @@
+
+
+You moved your mouse over <span id="movenotice"></span>
+<br>
+Button mouse overs: <span id="mouseovers">0</span>
+<br><br>
+
+<button id="btn1">Candy</button> <br>
+<button id="btn2" onclick="showmessage('Toys')">Toys</button> <br>
+<button id="btn3" onclick="showmessage('Kittens')">Kittens</button> <br>
+
+<br>
+
+<button id="btn11" data-fruitcolor="red" onclick="fruitmessage(this)">Apples</button> <br>
+<button id="btn12" data-fruitcolor="yellow" onclick="fruitmessage(this)">Bananas</button> <br>
+<button id="btn13" data-fruitcolor="orange" onclick="fruitmessage(this)">Oranges</button> <br>
+
+<script>
+    function showmessage(text) {
+        alert(text + " are for good girls and boys.");
+    }
+
+    function fruitmessage(btn)
+    {
+        alert(btn.innerText + 
+              " are " + 
+              btn.getAttribute("data-fruitcolor") + 
+              " and are good snacks!")
+    }
+
+    var buttonMoveCount = 0;
+
+    function sethandlers()
+    {
+       var btns = document.getElementsByTagName("button");
+       var msgspan = document.getElementById("movenotice");
+       for (var i=0; i<btns.length; i++) {
+            btns[i].onmouseover = function() {
+                msgspan.innerText = this.innerText;
+                buttonMoveCount++;
+                document.getElementById("mouseovers").innerHTML = buttonMoveCount;
+
+                msgspan.style.backgroundColor = "lightgray";
+                if (this.getAttribute("data-fruitcolor"))
+                {
+                    msgspan.style.backgroundColor = this.getAttribute("data-fruitcolor");
+                }
+            }
+       }
+    }
+    sethandlers();
+
+</script>

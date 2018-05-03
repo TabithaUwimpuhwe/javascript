@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>JavaScript Add a Button to Update the time</title>
+</head>
+<body>
+<!-- In previous ex2, we created CurrentTime. There are 3 ways to Update the the time (Adding an event handler via INLINE JavaScript Code; or a FUNCTION call, or from JS code based on algorithm): 
+   a. In the body, add a Button with "onclick" ((Onclick is a JS function) containing the singleline setter/getter code (no script); or
+   b. Add the function UpdateTime method in the Script and add that Update method in the Button tag;
+   c. Add an Id to UpdateButton method in the Button and create its instance Onclick in the script with the function UpdateTime() -->
+   
+   The current time is <span id="currentTime"> time goes here</span>
+    
+<!--    Option a. with script commented out, also pay attention to " " and '', dont use it twice-->
+<!--     <button onclick="document.getElementById('currentTime').textContent=(new Date()).toLocaleTimeString()"> update the time</button>; -->
+   
+<!--     Option b. with above option a. commentent out, simply wrap around your Script, the updateTime method -->
+<!--     <button onclick="UpdateTime ()"> update time with a function</button>; 
+  <button onclick="UpdateTime ()"> update the time</button>;
+    <script>     
+        function UpdateTime (){ //pay attention to Capital U (UpdateTime)
+           document.getElementById("currentTime").textContent=(new Date()).toLocaleTimeString();
+        }                      
+    </script>--> 
+    
+<!--    Option c. Add an Id to button, while keeping the function above, define onclick On button inside the script taps-->
+     <button id=UpdateButton > a clean update time button </button>; <!--pay att.to Id, no (), not a method or with " " when used with alternate method function (e) -->
+    <script>     
+        function UpdateTime (){ //pay attention to Capital U (UpdateTime) bc it is a class (not var)
+           document.getElementById("currentTime").textContent=(new Date()).toLocaleTimeString();  
+        }           
+        var updateButton = document.getElementById("UpdateButton");
+        UpdateButton.onclick=UpdateTime;    
+      //alternative - did not work for me
+//        updateButton.onclick = function (e){
+//            document.getElementById('currentTime').textContent=(new Date()).toLocaleTimeString();  
+ //       }
+        
+    </script>
+
+</body>
+</html>

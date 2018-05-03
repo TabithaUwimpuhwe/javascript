@@ -1,0 +1,25 @@
+
+<script>
+
+// nested functions
+
+
+var topvar = 5;
+
+function a()
+{
+  alert(topvar);
+  alert(innervar);  // error here! "innervar" is not in scope
+
+  function b()
+  {
+    alert(innervar);
+    var innervar = 6;
+    alert(innervar);
+
+  }
+
+}
+
+a();
+</script>

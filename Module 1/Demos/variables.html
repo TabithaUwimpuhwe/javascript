@@ -1,0 +1,21 @@
+
+<button id="b1" onclick="ButtonClick(this)">Click me</button>
+
+<script>
+    function DoWork()
+    {
+       for (var i=0; i<10; i++) { /* do something */ }
+       alert(i); // returns 10... "i" got hoisted to the function level.
+    }
+    DoWork();
+    //alert(i)  // error!
+
+
+    function ButtonClick() {
+        alert(this);
+    }
+
+    // can also add event handler this way:
+    //document.getElementById("b1").onclick=ButtonClick;
+    
+</script>

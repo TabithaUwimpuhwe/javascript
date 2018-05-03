@@ -1,0 +1,29 @@
+<script>
+
+//Try Catch Block (p. 83)
+try {
+    
+    window.CoolNewFunction("test");
+}
+catch (e) {
+    alert("you need the new cool version of JavaScript!");
+    alert("Error: " + e.message);
+}
+
+// The window.onerror function (p. 83)
+window.onerror = function() { alert("Something is broken! Call the helpdesk!"); }
+
+Beep()    // there is no Beep() function in this project!
+
+    
+// better version:  (p. 84)
+window.onerror = function(message, source, line, col, error) { 
+   alert("Please call the helpdesk and report:\n" +
+        "Message: " + message + "\n" +
+        "Source:  " + source + "\n" + 
+        "Line:    " + line + "   Column: " + col + "\n" +
+        "Error:   " + error) 
+     }
+
+
+</script>

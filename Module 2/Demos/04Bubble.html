@@ -1,0 +1,22 @@
+<div id="div1">
+  <button id="btn1">Button 1 (bubbles)</button><br>
+</div>
+<div id="div2">
+  <button id="btn2">Button 2 (does not bubble)</button><br>
+</div>
+
+<script>
+    var btn1 = document.getElementById("btn1")
+    btn1.addEventListener("click",function(event) { alert("You clicked button " + btn1.id); })
+    var div1 = document.getElementById("div1")
+    div1.addEventListener("click",function(event) { alert("You also clicked " + div1.id) } )
+
+    var btn2 = document.getElementById("btn2")
+    btn2.addEventListener("click",function(event) { alert("You clicked button " + btn2.id); event.stopPropagation(); })
+    var div2 = document.getElementById("div2")
+    div2.addEventListener("click",function(event) { alert("You also clicked " + div2.id) } )
+
+// for more on MouseEvent object ("function(event)") see:
+// https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
+
+</script>

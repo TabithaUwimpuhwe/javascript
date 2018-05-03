@@ -1,0 +1,70 @@
+﻿body {
+    font-size: 18px;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    background-image: url('mountains.jpg');
+    background-attachment: fixed; 
+}
+
+h1, h2, h3, h4, h5, h6 { 
+    font-family:"Comic Sans MS", cursive;
+    color:rgb(255,93,0) !important; 
+    /* background:linear-gradient(white, black); */
+    text-shadow: 2px 2px white;
+}  
+
+h2 {
+    border-bottom-color:black;
+    border-bottom-style:solid;
+    border-width:2px;
+}
+
+
+h2[style*="italic"] {
+    font-style:normal !important;
+}
+
+
+header {
+    color:white;
+    text-shadow: 4px 4px 4px rgb(149,137,138);
+    font-size:48px;
+    text-align:center;
+    border:5px solid;
+    border-color:black;
+    background-color:rgb(255,93,0);
+    padding:40px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+nav a:hover {
+    background-color:lightgray;
+}
+
+nav a {
+    text-decoration:none;
+    border:1px solid;
+    border-radius:5px 5px 0 0;
+    margin-right:-5px;
+    padding:5px;
+    color:white;
+    background-color:black;
+}
+
+
+nav {
+    
+    background-color:black;
+    /* margin-top:10px; */
+    /* padding-bottom:5px;*/
+    padding-top:10px;
+    background-image:url(star.png);
+    background-repeat:repeat-x;
+    height:28px;
+
+}
+
+aside {
+    background: linear-gradient(white 50px, rgb(255,93,0)); 
+}
+

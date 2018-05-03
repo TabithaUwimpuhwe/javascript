@@ -1,0 +1,21 @@
+<div></div>
+
+
+<button id="btn10">Click Me!</button>
+
+<script>
+    var btn1 = document.getElementById("btn10");
+    // add an event handler using inline code...
+    btn1.onclick = function() { alert("btn10 says: You clicked me!") };
+</script>
+
+<button id="btn20">Click Me Too!</button>
+
+<script>
+    var btn2 = document.getElementById("btn20");
+    // add an event handler using addEventListener
+    btn2.addEventListener("click", function() { alert("btn20 says: You clicked me!") } );
+    // add a second event handler to the button...
+    btn2.addEventListener("click", function() { alert("btn20 says: Thank you!") } );
+</script>
+

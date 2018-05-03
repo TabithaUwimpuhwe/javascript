@@ -1,0 +1,26 @@
+<script>
+
+//
+
+// better version:
+window.onerror = function(message, source, line, col, error) { 
+   alert("Please call the helpdesk and report:\n" +
+        "Message: " + message + "\n" +
+        "Source:  " + source + "\n" + 
+        "Line:    " + line + "   Column: " + col + "\n" +
+        "Error:   " + error) 
+     }
+
+window.onerror = function() { alert("Something is broken! Call the helpdesk!"); }
+
+Beep()    // there is no Beep() function in this project!
+
+try {
+    
+    window.CoolNewFunction("test");
+}
+catch (e) {
+    alert("you need the new cool version of JavaScript!");
+    alert("Error: " + e.message);
+}
+</script>

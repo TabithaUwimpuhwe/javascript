@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Test</title>
+</head>
+<body>
+    The current time is <span id="currentTime"> time goes here</span>
+     
+      <!--setting the textContent property to current time -->
+    <script> 
+
+        var timeSpan= document.getElementById("currentTime");
+        var now = new Date();
+        var time=now.toLocaleTimeString(); 
+        timeSpan.textContent= time; 
+
+       // document.getElementById("currentTime").textContent=(new Date()).toLocaleTimeString();
+    // will display the above span "The current is whatever is current time eg. 11:07:49 AM"
+              
+    </script>
+</body>
+</html>

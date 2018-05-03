@@ -1,0 +1,32 @@
+<button id="btn10" onclick="alert('You clicked btn10!')">Button 10</button><br>
+<button id="btn11" onclick="alert('You clicked ' + this.id)">Button 11</button><br>
+<button id="btn12" onclick="DoAnAlert(this)">Button 12</button><br>
+<button id="btn13" onclick="DoAnAlert(this)">Button 13</button><br>
+
+<script>
+  function DoAnAlert(btn) { alert('You clicked ' + btn.id); }
+</script>
+
+
+
+<button id="btn20">Button 20</button><br>
+
+<script>
+    var btn = document.getElementById("btn20")
+    btn.onclick = function() { alert("You clicked " + this.id) }
+</script>
+
+
+
+
+<button id="btn21">Button 21</button><br>
+
+<script>
+    var btn = document.getElementById("btn21")
+    btn.addEventListener("click",function() { alert("You clicked " + btn.id) }, true)
+    btn.addEventListener("click",function() { alert("Why did you click me?") })
+</script>
+
+
+
+

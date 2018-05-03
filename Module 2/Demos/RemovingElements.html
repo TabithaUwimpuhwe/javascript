@@ -1,0 +1,62 @@
+<style>
+     td { border: 1px solid red;}
+</style>
+
+
+<h1 id="TheHeading">This is a heading</h1>
+<button onclick="DeleteHeading()">Delete the heading using element.remove()</button>
+<br>
+<script>
+    function DeleteHeading() {
+        var heading = document.getElementById("TheHeading");
+        var body = document.body;
+        body.removeChild(heading);
+    }
+</script>
+
+
+<br><br><br>
+
+
+<table id="tasktable">
+    <tr><th>Task ID</th><th>Task Status</th></tr>
+    <tr><td>100</td><td>Active</td></tr>
+    <tr><td>101</td><td>Inactive</td></tr>
+    <tr><td>102</td><td>Inactive</td></tr>
+    <tr><td>103</td><td>Active</td></tr>
+    <tr><td>104</td><td>Inactive</td></tr>
+    <tr><td>105</td><td>Active</td></tr>
+</table>
+<br>
+
+<button onclick="DeleteInactive1()">
+    Delete inactive tasks using deleteRow()
+</button> <br>
+<button onclick="DeleteInactive2()">
+    Delete inactive tasks using element.removeChild()
+</button> <br>
+
+<script>
+    // Delete inactive tasks using deleteRow()
+    function DeleteInactive1() {
+        var tasktable = document.getElementById("tasktable");
+        for (var i = tasktable.rows.length - 1; i>=0; i--) {
+            if (tasktable.rows[i].cells[1].textContent == "Inactive")
+            {
+                tasktable.deleteRow(i);
+            }        
+        }
+    }
+
+    // Delete inactive tasks using element.removeChild()
+    function DeleteInactive2() {
+        var tasktable = document.getElementById("tasktable");
+        var tableTRs = tasktable.getElementsByTagName("tr");
+        for (var i = tableTRs.length - 1; i>=0; i--) {
+            if (tableTRs[i].getElementsByTagName("TD")[1].textContent == "Inactive")
+            {
+                tableTRs[i].parentNode.removeChild(tableTRs[i]);
+            }        
+        }
+    }
+</script>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toy Web Pages Inc. - Sports</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" 
+            crossorigin="anonymous"></script>
+
+    <link href="TWPIstyles.css" rel="stylesheet" />
+    <style>
+        h2 {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        Toy Web Pages Inc.  &#9786;
+    </header>
+
+    <nav id="topNav">
+        <a href="default.html">Home</a> <a href="Toys.html">Toys</a> <a href="Sports.html">Sports</a> <a href="InfoRequest.html">More Information</a>
+    </nav>
+
+    <section>
+
+        <h1>Sporting Goods!</h1>
+
+        <article>
+            <h2>Bicycles</h2>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.
+            <br>
+            <br>
+            Select a color: 
+            <select id="bikecolor">
+                <option value="">Select a bike color...</option>
+                <option value="">All</option>
+                <option>Black</option>
+                <option>Blue</option>
+                <option>Green</option>
+                <option>Red</option>
+                <option>Silver</option>
+                <option>Yellow</option>                
+            </select>
+            <br>
+
+            <table id="products">
+            </table>
+            
+            <div id="status" style="display:none">Working...</div>
+
+<div id="rawdata"></div>
+        </article>
+
+
+    </section>
+    <br />
+    <footer>
+        Copyright &copy; 2017 TWPinc.   <a href="AboutUs.html">About</a>    <a href="Contact.html">Contact Us</a>    <a href="Privacy.html">Privacy</a>
+    </footer>
+
+<script>
+    // Add code here to add the event handler function below to 
+    // to the select list's 
+
+    (function() {
+        var selColor = document.getElementById("bikecolor");
+        selColor.onchange = function() {GetBikes(this);}
+    })();
+
+
+    // Add an event handler function here to fetch the Bikes data
+    // from the web service
+
+    function GetBikes(select)
+    {
+        // get the color from the dropdown list 
+        var color =  select.options[select.selectedIndex].value;
+
+        var workingmsg = document.getElementById("status");
+        workingmsg.style.display="block";
+
+        // build the odata filter query string
+        var filter = "";
+        if (color!="")
+        {
+            filter="?$filter=color eq '" + color +"'";
+        }
+
+        // use jQuery to make the Ajax call
+        $.ajax({
+            url:"http://maxrestdemo.azurewebsites.net/odata/Bikes" + filter,
+            // HTTP method: GET, POST, PUT, PATCH, DELETE
+            type: "GET",
+            // how the ajax function should send and return data.
+            //contentType: 'application/json',
+            dataType: 'json',
+            // the data to send as a JSON string - not needed for GETs
+            // data: "",
+            // any additional HTTP headers needed. Length is needed for POST, PUT, PATCH
+            //headers: { "Content-Length": dataToSend.length },
+
+            // What to do if it all worked!
+            success: function(data) { UpdateTable(data) },
+            // And what to do if it fails!
+            error: function (jqXHR, ex, msg) {
+                alert("Error from server: " +
+                    jqXHR.responseText + 
+                    "\nException: " + ex +
+                    "\nMessage: " + msg +
+                    "\nMessage from server: " + jqXHR.responseText);
+                workingmsg.style.display="none";
+            }
+        })
+
+    }
+
+        // var ajaxcall = {
+        //     url:"http://maxrestdemo.azurewebsites.net/odata/Bikes" + filter,
+        //     type: "GET",
+        //     dataType: 'json',
+        //     success: function(data) { UpdateTable(data) },
+        //     error: function (jqXHR, ex, msg) {
+        //         alert("Error from server: " +
+        //             jqXHR.responseText + 
+        //             "\nException: " + ex +
+        //             "\nMessage: " + msg +
+        //             "\nMessage from server: " + jqXHR.responseText);
+        //     }
+        // }
+        // $.ajax(ajaxcall);
+
+        // var ajaxcall = {};
+        // ajaxcall.url = "http://maxrestdemo.azurewebsites.net/odata/Bikes" + filter;
+        // ajaxcall.type = "GET";
+        // ajaxcall.dataType = 'json';
+        // ajaxcall.success = function(data) { UpdateTable(data) };
+        // ajaxcall.error = function (jqXHR, ex, msg) {
+        //                     alert("Error from server: " +
+        //                         jqXHR.responseText + 
+        //                         "\nException: " + ex +
+        //                         "\nMessage: " + msg +
+        //                         "\nMessage from server: " + jqXHR.responseText);
+        //                     };
+        // $.ajax(ajaxcall);
+
+
+
+
+
+
+        // Write a function to be called from the Ajax success function. 
+        // Add rows to the the existing HTML table.
+
+        function UpdateTable(data) {
+
+            // Update the status ("working...") message.
+            var workingmsg = document.getElementById("status");
+            workingmsg.style.display="block";
+
+            //The JSON data starts with a top level object named "value".
+            var BikesList = data.value;
+ 
+            // Add rows to the HTML table
+            var products = document.getElementById("products");
+            products.innerHTML="";  // clear the existing content
+            var rownum =  0;
+            var row;
+            var cell;
+
+            // Add the column headings row (manually)
+            // row = products.insertRow(rownum);
+            // cell = row.insertCell(0);
+            // cell.innerHTML = "ID";
+            // cell = row.insertCell(1);
+            // cell.innerHTML = "Color";
+            // cell = row.insertCell(2);
+            // cell.innerHTML = "Category";
+            // cell = row.insertCell(3);
+            // cell.innerHTML = "Size";
+            // cell = row.insertCell(4);
+            // cell.innerHTML = "Price";
+            // rownum++;
+
+            // Add the column headings row (using a loop)
+            row = products.insertRow(rownum);
+            var headings = ["ID", "Color", "Category", "Size", "Price"];
+            for (var i = 0; i < headings.length; i++) {
+                row.insertCell(i).innerHTML = headings[i];                
+            }
+            rownum++;
+
+            // // add each product to a row (manually)
+            // for (var index = 0; index < BikesList.length; index++) {
+            //     var item = BikesList[index];
+            //     row = products.insertRow(rownum);
+            //     cell = row.insertCell(0);
+            //     cell.innerHTML = item.id;
+            //     cell = row.insertCell(1);
+            //     cell.innerHTML = item.color;
+            //     cell = row.insertCell(2);
+            //     cell.innerHTML = item.category;
+            //     cell = row.insertCell(3);
+            //     cell.innerHTML = item.size;
+            //     cell = row.insertCell(4);
+            //     cell.innerHTML = "$" + item.price.toLocaleString();
+            //     rownum++;
+            // }
+
+            // add each product to a row (using a loop)
+            for (var index = 0; index < BikesList.length; index++) {
+                var item = BikesList[index];
+                row = products.insertRow(rownum);
+                var properties = ["id", "color", "category", "size", "price"];
+                for (var i = 0; i < properties.length; i++) {
+                    row.insertCell(i).innerHTML = item[properties[i]];
+                }
+                rownum++;
+            }
+
+
+            // hide the "working..." message
+            workingmsg.style.display="none";
+
+        }
+
+    
+</script>
+
+    <style>
+        tr:first-child { color:orange; font-weight: bold;}
+        td {border:1px solid black;}
+        td:nth-of-type(4), td:nth-of-type(5) {text-align: right}
+    </style>
+
+    <script src="MenuPopups.js"></script>
+
+</body>
+</html>

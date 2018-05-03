@@ -1,0 +1,28 @@
+<script>
+
+    var counter = 123; // a Globally scoped variable that has 
+                       // no impact on the following code!
+
+    function Count()
+    {
+        var counter = 0;
+
+        // return an object with two functions
+        return {
+            increment: function() { counter++; alert(counter); },
+            decrement: function() { counter--; alert(counter); }
+        }
+    }
+
+    var myCount = Count();
+    myCount.increment();
+    myCount.increment();
+    myCount.increment();
+    myCount.decrement();
+    myCount.increment();
+
+    var myCount2 = Count();
+    myCount2.increment();
+    myCount2.increment();
+
+</script>

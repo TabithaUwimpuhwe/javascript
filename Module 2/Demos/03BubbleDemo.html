@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html onclick="alert('html clicked')">
+<head><title>Bubble Demo</title></head>
+<body onclick="alert('body clicked')">
+<div onclick="alert('div clicked')"> 
+  <table onclick="alert('table clicked')">
+    <tr onclick="alert('tr clicked')">
+      <td onclick="alert('td clicked')">
+        <div onclick="alert('div clicked')">
+          <button onclick="alert('button clicked')">Button 1 (bubbles)</button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<script>
+  document.onclick = function() {alert('document clicked')}; 
+  window.onclick = function() { alert('window clicked') };
+  alert(99)
+</script>
+
+</body>
+</html>

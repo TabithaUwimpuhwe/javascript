@@ -1,0 +1,67 @@
+<span></span>
+
+<ul id="colorlist">
+    <li>Red</li>
+    <li>Blue</li>
+</ul>
+
+<script>
+    var colors = document.getElementById("colorlist");
+
+    // add a new <li> to the <ul>
+    var colorgreen = document.createElement("li");
+    colorgreen.textContent = "Green";
+    // add to the end
+    colors.appendChild(colorgreen);  // red, blue, green
+
+    var colorwhite = document.createElement("li");
+    colorwhite.textContent = "White";
+    // retrieve the element you want to insert in front of.
+    var greennode = colors.getElementsByTagName("li")[2];  // green
+    // add before an existing element
+    colors.insertBefore(colorwhite,greennode);  // red, blue, white, green
+
+    var colororange = document.createElement("li");
+    colororange.textContent = "Orange";
+    // find using CSS style selector
+    var whitenode = document.querySelector("#colorlist li:nth-child(3)")  // white
+    // add before an existing element
+    colors.insertBefore(colororange,whitenode);  // red, blue, orange, white, green
+    
+    // add a new heading as the first element on the page
+    // and set a few attributes.
+    var newheading = document.createElement("h1");
+    newheading.textContent="Adding Elements Page";
+    newheading.id = "PageHeading";
+    newheading.style.color = "red";
+    newheading.style.width = "auto";
+    newheading.style.border = "1px solid black";
+    newheading.style.display = "table"; // fit width to content size
+    document.body.insertBefore(newheading, document.body.firstChild);
+    alert("The new tag: \n" + newheading.outerHTML)
+
+    // add a new element with a text node instead of textContent.
+    var colornametext = document.createTextNode("Light Green"); 
+    var colorltgreen = document.createElement("li");
+    colorltgreen.appendChild(colornametext);
+    colors.appendChild(colorltgreen);  
+
+
+
+    // more than one way to add attributes
+    var colorltblue = document.createElement("li");
+    colorltblue.textContent = "Light Blue";
+
+    // use object dot notation
+    colorltblue.style.color = "lightblue";
+    // or use object indexer notation
+    colorltblue["style"].color = "lightblue";
+    // or create an attribute node
+    var styleAtt = document.createAttribute("style");
+    styleAtt.value = "color:lightblue";
+    colorltblue.setAttributeNode(styleAtt);
+
+    colors.appendChild(colorltblue);  
+
+
+</script>

@@ -1,0 +1,50 @@
+<style>
+    td { border:1px solid red; text-align: right; }
+    table { float: left; }
+</style>
+
+<table id="table1" ></table>
+<table id="table2" ></table>
+
+<script>
+
+console.log("script started")
+
+
+console.log("table population started")
+
+var table1 = document.getElementById("table1");
+
+console.group("looping to add rows");
+
+console.time("Loop timer");
+
+for (var i = 0; i < 100; i++) {
+    var row = table1.insertRow(i);
+    var td0 = row.insertCell(0)
+    td0.innerText = i.toString();
+    var x = Math.round( Math.random() * 10000) ;
+    var y = Math.round( Math.random() * 10) / 10;
+    //console.log("i = " + i + "\tx = " + x + "\ty = " + y)
+    var z = Math.round(x/y);    
+    if (z == Infinity)
+    {
+        console.log("i = " + i + "\tx = " + x + "\ty = " + y)
+        console.warn("Division by zero! Setting the value of z to 0.");
+        z = 0;
+    }
+    var td1 = row.insertCell(1)
+    td1.innerText = z.toString();
+}
+
+console.timeEnd("Loop timer");
+
+console.groupEnd();
+
+
+
+console.log("script end");
+
+</script>
+
+

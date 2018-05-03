@@ -1,0 +1,29 @@
+<script>
+
+    var counter = 123; // a Globally scoped variable that has 
+                       // no impact on the following code!
+
+    function Count()
+    {
+        var counter = 0;
+        function doTheCount() // defined inside of Count, 
+        {                     // so has access to counter
+            counter++;
+            alert(counter);
+        }
+
+        return doTheCount;  // return the inner function
+    }
+
+    var myFunction = Count();  // myFunction now contains doTheCount
+    myFunction();  // alert 1
+    myFunction();  // alert 2
+    myFunction();  // alert 3
+
+    var yourFunction = Count();  // myFunction now contains doTheCount
+    yourFunction();  // alert 1
+    yourFunction();  // alert 2
+    
+    alert(counter);  // 123 // this is the global counter variable.
+
+</script>

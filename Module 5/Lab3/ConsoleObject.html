@@ -1,0 +1,26 @@
+<style>
+    td { border:1px solid red; text-align: right; }
+    table { float: left; }
+</style>
+
+<table id="table1" ></table>
+
+<script>
+
+var table1 = document.getElementById("table1");
+
+for (var i = 0; i < 100; i++) {
+    var row = table1.insertRow(i);
+
+    var td0 = row.insertCell(0)
+    td0.innerText = i.toString();
+
+    var x = Math.round( Math.random() * 100) ;
+    var y = Math.round( Math.random() * 10) ;
+    var z = Math.round(x/y);   
+    var td1 = row.insertCell(1)
+    td1.innerText = z.toString();
+}
+
+</script>
+

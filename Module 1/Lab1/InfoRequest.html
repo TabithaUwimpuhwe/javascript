@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Info Request</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="TWPIstyles.css" rel="stylesheet" />
+</head>
+<body>
+
+    <header>
+        Toy Web Pages Inc.  &#9786;
+    </header>
+
+    <nav>
+        <a href="default.html">Home</a> <a href="Toys.html">Toys</a> <a href="Sports.html">Sports</a> <a href="InfoRequest.html">More Information</a>
+    </nav>
+
+    <h2>Information Request Form</h2>
+
+    <section>
+
+        <form name="form1" method="GET" action="formresultsdummy.html">
+
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td>   <input type="text" name="firstName"> </td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td>    <input type="text" name="lastName"> </td>
+                </tr>
+
+                <tr>
+                    <td>Product Type:</td>
+                    <td>
+                        <input type="radio" name="prodType" value="Airplane"> Airplane<br>
+                        <input type="radio" name="prodType" value="Boat"> Boat<br>
+                        <input type="radio" name="prodType" value="Car"> Car/Truck<br>
+                        <input type="radio" name="prodType" value="Other"> Other<br>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Comments:</td>
+                    <td>
+                        <textarea name="comments" rows=5 cols=50
+                                  wrap="soft"></textarea>
+                    </td>
+                </tr>
+
+            </table>
+
+            <input type="hidden" name="contactType" value="infoRequest">
+
+            <br>
+            <button type="submit">Submit</button>
+            <br>
+            <input type="reset" value="Reset the form">
+
+        </form>
+
+    </section>
+    <footer>
+        Copyright &copy; 2017 TWPinc.   <a href="AboutUs.html">About</a>    <a href="Contact.html">Contact Us</a>    <a href="Privacy.html">Privacy</a>
+    </footer>
+
+
+</body>
+</html>
